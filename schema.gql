@@ -1,0 +1,111 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Student {
+  _id: String!
+
+  """Student name """
+  name: String!
+
+  """Student Roll #"""
+  rollNumber: String!
+
+  """Student email """
+  email: String!
+
+  """Student age"""
+  age: String!
+
+  """Student phone"""
+  phone: String!
+}
+
+type PageDataDto {
+  count: Float!
+  limit: Float!
+  offset: Float!
+}
+
+type ListStudentsResponse {
+  page: StudentConnection!
+  pageData: PageDataDto
+}
+
+type StudentConnection {
+  edges: [StudentEdge!]
+  pageInfo: StudentPageInfo
+}
+
+type StudentEdge {
+  cursor: String
+  node: Student
+}
+
+type StudentPageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type Query {
+  students: [Student!]!
+  listStudentsWithCursor(args: ConnectionArgs!): ListStudentsResponse!
+  student(_id: String!): Student!
+}
+
+input ConnectionArgs {
+  """Paginate before opaque cursor"""
+  before: String
+
+  """Paginate after opaque cursor"""
+  after: String
+
+  """Paginate first"""
+  first: Float
+
+  """Paginate last"""
+  last: Float
+}
+
+type Mutation {
+  createStudent(createStudentInput: CreateStudentInput!): Student!
+  updateStudent(updateStudentInput: UpdateStudentInput!): Student!
+  removeStudent(_id: String!): Student!
+}
+
+input CreateStudentInput {
+  """name of the student"""
+  name: String!
+
+  """roll number of the student"""
+  rollNumber: String!
+
+  """email of the student"""
+  email: String!
+
+  """age of the student"""
+  age: String!
+
+  """phone of the student"""
+  phone: String!
+}
+
+input UpdateStudentInput {
+  """name of the student"""
+  name: String
+
+  """roll number of the student"""
+  rollNumber: String
+
+  """email of the student"""
+  email: String
+
+  """age of the student"""
+  age: String
+
+  """phone of the student"""
+  phone: String
+  _id: String!
+}
